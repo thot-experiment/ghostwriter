@@ -1,0 +1,115 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Cormorant Infant";
+  font-weight: bold;
+}
+ p {
+  margin: 0px;
+  justify-content: center;
+ }
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+#text {
+  margin-top: -2.7em;
+  width:80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.title-container {
+  margin-top: -0.2em;
+  font-size: 2rem;
+    flex: 1;
+    display: flex;
+}
+
+#title {
+    outline: none;
+    min-width: 100px;
+    text-align: center;
+}
+
+.input {
+  justify-content: center;
+  text-align: left;
+}
+
+.old-input {
+  animation: 
+  fadeVert 8.5s ease-out forwards
+  ;
+  max-height: var(--original-height);
+}
+
+.input span {
+  outline: none;
+  display: inline-block;
+  text-align: left;
+  max-height: 1em;
+  overflow-x: clip;
+}
+
+.fade {
+  animation: 
+  fadeOut 8.5s ease-out forwards
+  ;
+  vertical-align:top;
+  max-width: var(--original-width);
+}
+
+@keyframes fadeVert {
+    60% {
+      height: var(--original-height);
+    }
+    100% {
+      height: 0px;
+    }
+}
+
+@keyframes fadeOut {
+    25% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0.1;
+      max-width: var(--original-width);
+    }
+    100% {
+      opacity: 0.0;
+      max-width: 0px;
+    }
+}
+
+* {
+  box-sizing: border-box;  
+}
