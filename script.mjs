@@ -92,6 +92,7 @@ window.onload = () => {
       old_input.style.setProperty('--original-height', `${old_input.getClientRects()[0].height}px`)
       text.appendChild(input)
       input.classList.add("input")
+      //((what value, this is a stale ass comment i don't understand))
       //TODO this should get the value from .old-input
       //it doesn't because it triggers on the end of a child anim i think
       setTimeout(() => 
