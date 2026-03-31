@@ -186,7 +186,7 @@ window.onload = () => {
     // Update state with new content
   }
   const setup_handlers = (input, prev_input) => {
-    old_input.oninput = undefined
+    prev_input.oninput = undefined
     input.oninput = inputhandler(input)
     input.onbeforeinput = e => {
       if (e.data === " ") {
