@@ -111,7 +111,7 @@ p {
 }
 
 .first-load {
-  animation: extraSlowFadeOut 5s forwards;
+  animation: extraSlowFadeOut 25s forwards;
 }
 
 @keyframes extraSlowFadeOut {
@@ -152,7 +152,7 @@ p {
 }
 
 .fade {
-  animation: fadeOut 8.5s ease-out forwards;
+  animation: fadeOut 18.5s ease-out forwards;
   vertical-align: top;
   max-width: var(--original-width);
 }
