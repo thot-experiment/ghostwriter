@@ -54,9 +54,20 @@ let save_dirty = localStorage?.content?.length
 window.onload = () => {
   let input = document.getElementById("input")
   const title = document.getElementById("title")
+  const header = document.querySelector("#header")
+  header.addEventListener(
+    "animationend",
+    e => e.target.classList.remove("first-load"),
+    {once: true},
+  )
+  header.addEventListener(
+    "mouseover",
+    e => e.target.classList.remove("first-load"),
+    {once: true},
+  )
   const new_title = () => {
     localStorage.title = datetitle() + ".txt"
-    title.innerText = localStorage.title 
+    title.innerText = localStorage.title
   }
   document.getElementById("newtitle").onclick = new_title
 

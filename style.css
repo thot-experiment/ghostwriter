@@ -63,6 +63,8 @@ p {
   display: flex;
   justify-content: flex-end;
   gap: 1em;
+  opacity: 0;
+  transition: opacity 2s ease; 
 }
 
 .title-container {
@@ -70,6 +72,20 @@ p {
   font-size: 2rem;
   flex: 1;
   display: flex;
+}
+
+#header:hover {
+  opacity: 1;
+  transition: opacity 0.2s ease; 
+}
+
+.first-load {
+  animation: extraSlowFadeOut 5s forwards;
+}
+
+@keyframes extraSlowFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 #title {
