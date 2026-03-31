@@ -91,7 +91,7 @@ p {
 .button {
   font-size: 2rem;
   display: inline-block;
-  border: 2px solid black;
+  border: 2px solid var(--main-color);
   border-radius: 7px;
   padding: 0px 0.4rem;
   top: 0.2rem;
