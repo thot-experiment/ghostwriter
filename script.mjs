@@ -54,10 +54,13 @@ let save_dirty = localStorage?.content?.length
 window.onload = () => {
   let input = document.getElementById('input')
   const title = document.getElementById('title')
+
+  const pad = n => n.toString().padStart(2, '0')
+  const datetitle = (d = new Date()) => `${pad(d.getDate())}-${pad(d.getMonth() + 1)}-${d.getFullYear()}_${pad(d.getHours())}${pad(d.getMinutes())}`
   if (localStorage.title) {
     title.innerText = localStorage.title
   } else {
-    localStorage.title = 'untitled.txt'
+    localStorage.title = datetitle()+'.txt'
   }
   if (!localStorage.content) { 
     localStorage.content = ''
@@ -65,6 +68,14 @@ window.onload = () => {
 
   title.oninput = () => {
       localStorage.title = title.innerText  
+  }
+
+  title.onblur = () => {
+    if (!title.innerText.trim().length) {
+      let new_title = datetitle()+'.txt'
+      localStorage.title = new_title
+      title.innerText = new_title
+    }
   }
 
   const addspan = linebreak => {
@@ -77,7 +88,7 @@ window.onload = () => {
       prevspan.innerHTML+= '&nbsp;'
       console.log(prevspan.getClientRects()[0].width)
       prevspan.onanimationend = () => {
-        prevspan.remove()
+        //prevspan.remove()
       }
     }
     let span = document.createElement('span')
@@ -164,4 +175,24 @@ window.onload = () => {
     // Skeleton raw handler
     console.log('Raw content:', editorState.get_raw())
   }
+
+  const z = {anim: () => {
+  let input = document.querySelector('.input:not(.old-input)')
+    let input_w = input.getClientRects()[0].width
+	let inputs = [...document.querySelectorAll('.input')]
+  let inputs_height = inputs.map(input => {
+	  let rects = input.getClientRects()[0]
+    return rects.height
+  }).reduce((a,b) => a+b)
+  let emheight = parseFloat(getComputedStyle(input)["font-size"])
+	let bodyRects = document.body.getClientRects()[0]
+  let text = document.querySelector('#text')
+	text.style.marginTop = `-${inputs_height+emheight*2}px`
+	//text.style.left = `-${input_w}px`
+	//console.log({last,rects,text})
+	requestAnimationFrame(window.z.anim)
+}}
+ window.z = z
+
+window.z.anim()
 }

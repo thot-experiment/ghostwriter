@@ -10,6 +10,8 @@ body {
   flex-direction: column;
   font-family: "Cormorant Infant";
   font-weight: bold;
+  background: #eee8e3;
+  color: #061a2b;
 }
  p {
   margin: 0px;
@@ -19,27 +21,31 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
-  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
+  overflow: hidden;
 }
 
 #text {
   margin-top: -2.7em;
-  width:80%;
+  min-width:50%;
+  max-width:800px;
   display: flex;
+  /*
   justify-content: center;
   align-items: center;
+  */
   flex-direction: column;
+  overflow: hidden;
+  position: absolute;
 }
 
 #header {
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);
     padding: 1em;
     display: flex;
     justify-content: flex-end;
@@ -65,10 +71,12 @@ body {
 }
 
 .old-input {
+  /*
   animation: 
   fadeVert 8.5s ease-out forwards
   ;
   max-height: var(--original-height);
+  */
 }
 
 .input span {
@@ -102,10 +110,12 @@ body {
     }
     60% {
       opacity: 0.1;
+      background: none;
       /*max-width: var(--original-width);*/
     }
     100% {
       opacity: 0.0;
+      /*background: red;*/
       /*max-width: 0px;*/
     }
 }
