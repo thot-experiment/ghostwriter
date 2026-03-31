@@ -94,8 +94,9 @@ window.onload = () => {
     }
   }
 
-  const addspan = linebreak => {
+  const addspan = (linebreak, event) => {
     const prevspan = input.lastElementChild
+    let span = document.createElement("span")
     if (prevspan) {
       console.log(prevspan.getClientRects()[0].width)
       prevspan.contentEditable = false
@@ -104,21 +105,21 @@ window.onload = () => {
         `${prevspan.getClientRects()[0].width}px`,
       )
       prevspan.classList.add("fade")
-      prevspan.innerHTML += "&nbsp;"
+      let span = document.createElement("span")
+      span.innerHTML += "&nbsp;"
+      input.appendChild(span)
       console.log(prevspan.getClientRects()[0].width)
       prevspan.onanimationend = () => {
         //prevspan.remove()
       }
     }
-    let span = document.createElement("span")
     if (linebreak) {
       const old_input = input
       old_input.id = ""
       old_input.classList.add("old-input")
       old_input.querySelector("br").remove()
       input = document.createElement("p")
-      input.oninput = inputhandler(input)
-      old_input.oninput = undefined
+      setup_handlers(input, old_input)
       old_input.style.setProperty(
         "--original-height",
         `${old_input.getClientRects()[0].height}px`,
@@ -148,7 +149,7 @@ window.onload = () => {
       e.preventDefault()
     } else if (key === " ") {
       console.log("Space pressed")
-      addspan()
+      addspan(undefined, true)
     } else if (
       inputType === "insertLineBreak" ||
       inputType === "insertParagraph"
@@ -162,10 +163,40 @@ window.onload = () => {
       console.log(e)
     }
 
+    const fixHangingSpaces = () => {
+      const spans = Array.from(input.children)
+      spans.forEach(s => s.classList.remove("wrap-hide"))
+
+      // Read: Get all Y offsets at once to avoid layout thrashing
+      const offsets = spans.map(s => s.offsetTop)
+
+      // Write 2: Hide spaces that are the first item on a new line
+      spans.forEach((span, i) => {
+        if (
+          i > 0 &&
+          span.textContent.match(/^\W$/) &&
+          offsets[i] > offsets[i - 1]
+        ) {
+          span.classList.add("wrap-hide")
+        }
+      })
+    }
+    fixHangingSpaces()
     editorState.input(e)
     // Update state with new content
   }
-  input.oninput = inputhandler(input)
+  const setup_handlers = (input, prev_input) => {
+    input.oninput = inputhandler(input)
+    old_input.oninput = undefined
+    input.onbeforeinput = e => {
+      if (e.data === " ") {
+        e.preventDefault()
+        inputhandler(input)(e)
+        return false
+      }
+    }
+  }
+  setup_handlers()
   document.querySelector("#root").onclick = () => {
     input.lastElementChild.focus()
   }

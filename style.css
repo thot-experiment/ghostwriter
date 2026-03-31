@@ -151,6 +151,10 @@ p {
   overflow-x: clip;
 }
 
+.wrap-hide {
+  display: none !important;
+}
+
 .fade {
   animation: fadeOut 18.5s ease-out forwards;
   vertical-align: top;
