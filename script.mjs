@@ -186,8 +186,8 @@ window.onload = () => {
     // Update state with new content
   }
   const setup_handlers = (input, prev_input) => {
-    input.oninput = inputhandler(input)
     old_input.oninput = undefined
+    input.oninput = inputhandler(input)
     input.onbeforeinput = e => {
       if (e.data === " ") {
         e.preventDefault()
@@ -196,7 +196,7 @@ window.onload = () => {
       }
     }
   }
-  setup_handlers()
+  setup_handlers(input, input)
   document.querySelector("#root").onclick = () => {
     input.lastElementChild.focus()
   }
