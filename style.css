@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -13,10 +14,22 @@ body {
   background: #eee8e3;
   color: #061a2b;
 }
- p {
+
+p {
   margin: 0px;
   justify-content: center;
- }
+}
+
+#newtitle {
+  margin-left: 0.5rem;
+  margin-top: -0.3rem;
+  opacity: 0.2;
+}
+
+#newtitle:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
 
 #root {
   width: 100vw;
@@ -30,8 +43,8 @@ body {
 
 #text {
   margin-top: -2.7em;
-  min-width:50%;
-  max-width:800px;
+  min-width: 50%;
+  max-width: 800px;
   display: flex;
   /*
   justify-content: center;
@@ -43,26 +56,26 @@ body {
 }
 
 #header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 1em;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1em;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
 }
 
 .title-container {
   margin-top: -0.2em;
   font-size: 2rem;
-    flex: 1;
-    display: flex;
+  flex: 1;
+  display: flex;
 }
 
 #title {
-    outline: none;
-    min-width: 100px;
-    text-align: center;
+  outline: none;
+  min-width: 100px;
+  text-align: center;
 }
 
 .input {
@@ -88,38 +101,36 @@ body {
 }
 
 .fade {
-  animation: 
-  fadeOut 8.5s ease-out forwards
-  ;
-  vertical-align:top;
+  animation: fadeOut 8.5s ease-out forwards;
+  vertical-align: top;
   max-width: var(--original-width);
 }
 
 @keyframes fadeVert {
-    60% {
-      height: var(--original-height);
-    }
-    100% {
-      height: 0px;
-    }
+  60% {
+    height: var(--original-height);
+  }
+  100% {
+    height: 0px;
+  }
 }
 
 @keyframes fadeOut {
-    25% {
-      opacity: 1;
-    }
-    60% {
-      opacity: 0.1;
-      background: none;
-      /*max-width: var(--original-width);*/
-    }
-    100% {
-      opacity: 0.0;
-      /*background: red;*/
-      /*max-width: 0px;*/
-    }
+  25% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.1;
+    background: none;
+    /*max-width: var(--original-width);*/
+  }
+  100% {
+    opacity: 0;
+    /*background: red;*/
+    /*max-width: 0px;*/
+  }
 }
 
 * {
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }

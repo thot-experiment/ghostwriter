@@ -1,26 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>👻 ghostwriter</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
     <!--script src="rws.js"></script-->
   </head>
   <body>
     <div id="header">
       <div class="title-container">
-        <div id="title" contenteditable="true" spellcheck="false">untitled.txt</div>
+        <div id="title" contenteditable="true" spellcheck="false"></div>
+        <div id="newtitle" contenteditable="false">⟲</div>
       </div>
       <button id="new">new</button>
       <button id="save">save</button>
-      <button id="raw" style="display:none;">raw</button>
+      <button id="raw" style="display: none">raw</button>
     </div>
     <div id="root">
-    <div id="text">
-      <p id="input" class="input"></p>
-    </div>
+      <div id="text">
+        <p id="input" class="input"></p>
+      </div>
     </div>
     <script type="module" src="script.mjs"></script>
   </body>
