@@ -1,3 +1,17 @@
+/* 1. Base/Light Theme */
+:root {
+  --bg-color: #eee8e3;
+  --main-color: #061a2b;
+}
+
+/* 2. Dark Theme Override */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #dfdad6;
+    --bg-color: #20242d;
+  }
+}
+
 html {
   height: 100%;
 }
@@ -11,8 +25,8 @@ body {
   flex-direction: column;
   font-family: "Cormorant Infant";
   font-weight: bold;
-  background: #eee8e3;
-  color: #061a2b;
+  background-color: var(--bg-color);
+  color: var(--main-color);
 }
 
 p {
@@ -64,7 +78,7 @@ p {
   justify-content: flex-end;
   gap: 1em;
   opacity: 0;
-  transition: opacity 2s ease; 
+  transition: opacity 2s ease;
 }
 
 .title-container {
@@ -74,9 +88,26 @@ p {
   display: flex;
 }
 
+.button {
+  font-size: 2rem;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 7px;
+  padding: 0px 0.4rem;
+  top: 0.2rem;
+  position: relative;
+  line-height: 1.4rem;
+  cursor: pointer;
+  /*! margin-top: ; */
+}
+.button:hover {
+  color: var(--bg-color);
+  background: var(--main-color);
+}
+
 #header:hover {
   opacity: 1;
-  transition: opacity 0.2s ease; 
+  transition: opacity 0.2s ease;
 }
 
 .first-load {
@@ -84,8 +115,12 @@ p {
 }
 
 @keyframes extraSlowFadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #title {
